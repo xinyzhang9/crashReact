@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
 import uuid from 'uuid';
-
 class AddProject extends Component {
   constructor(){
     super();
-    this.state = {
+    this.state={
       newProject:{}
     }
   }
   static defaultProps = {
-    categories: ['Web Design', 'Web Development', 'Mobile Development']
+    categories: ['Web Design','Web Development','Mobile Development']
   }
 
-  handleSumbit(e){
+  handleSubmit(e){
+    // console.log(this.refs.title.value);
     if(this.refs.title.value === ''){
       alert('title is required');
     }else{
@@ -27,14 +27,14 @@ class AddProject extends Component {
     }
     e.preventDefault();
   }
-  render() {
-    let categoryOptions = this.props.categories.map(category => {
+  render(){
+    let categoryOptions = this.props.categories.map( category => {
       return <option key={category} value={category}>{category}</option>
-    })
-    return (
+    });
+    return(
       <div>
-        <h3>Add Project </h3>
-        <form onSubmit={this.handleSumbit.bind(this)}>
+        <h3>Add Project</h3>
+        <form onSubmit={this.handleSubmit.bind(this)}>
           <div>
             <label>Title</label><br />
             <input type='text' ref='title' />
@@ -45,7 +45,6 @@ class AddProject extends Component {
               {categoryOptions}
             </select>
           </div>
-          <br />
           <input type='submit' value='Submit' />
         </form>
       </div>
